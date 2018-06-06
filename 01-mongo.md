@@ -30,66 +30,23 @@
 
 [Slide - Origins of NoSQL]()
 
-# 3 problems with Relational DBs
-
-1.  Scalability Problem with Relational databases: constantly having capacity problems as they got more and more data
-1.  Serialization/Deserialization/ORM: Translating data from database into objects that our application code can use
-1.  Flexibility: The relational model is inflexible especially when adding a new field or data rules change
-
 [Slide - noSQL Solution]()
 
-## NoSQL Alternative
-
-- Vocabulary change: Relational databases store data in tables, whereas on noSQL databases like MongoDB, it stores data in collections.
-- Vocabulary change: The noSQL equivalent of a relational database record is called a "document"
-- In a collection, not every document has to look the same. Unlike traditional db where all records have to follow same structure
-
 [Slide - Sample MongoDB Document]()
-
-- Here is a restaurant object where all the data is stored as key/value pairs => JSON !
-- Notice there is a unique identifier column that mongoDB automatically creates and populates called `_id`
-- it gives it a data type of ObjectId and gives it a generated unique identifier, so we never have to setup any kind of unique keyfield since MongoDB will do this automatically
-- Created in 2007 from the word "humongous", it's still the world's most popular noSQL db
 
 [Slide - Schema-less]()
 
-1.  Schema-less: Collections do not need to be defined before they can be used, 2 documents in the same collection can have a different number of fields, A collection can be automatically created when the first document is inserted into it
-1.  Each document, can have a different format that evolves over time without requiring to modify document structure first
-1.  Results in high performance and scalability
-
 [Slide - master-child]()
-
-1.  Data relations such as master-child data can now be nested, eliminating need for table relationships, foreign keys and joins
-1.  Suited to cloud hosting solutions which can automatically scale on demand
-
-# MongoDB
 
 [Slide - Sample MongoDB Document]()
 
-- To make it faster, instead of storing in plain text format, MongoDB will store it in Binary, in a format called BSON (Binary JSON)
-- Here we have 2 grades nested in the master. Compare that to relational db.
-- To query, no joins needed => fast
-- Tradeoff, if there are more complex, nested relationships, that becomes hard to manage. So typically don't want to do this if there are lots of tables and relationships
+[Slide - How do I get mongoDB]()
 
+[Slide - mlab]()
 
-## How do I get MongoDB?
+[Slide - Retro games]()
 
-- Download and install from https://www.mongodb.com/download-center#community
-- Run in the cloud for free at https://www.mlab.com
-- Enable as an Azure add-on
-
-## Configuring mongoDB locally
-
-- MongoDB is self contained and doesn't have any depedencies
-- can copy all files from `c:\program files\mongodb\server\3.6\bin` to `c:\users\username\node\mongodb`
-- it requires a `data` directory to store all data. The default is `c:\users\username\node\data\db`
-
-# Create database and insert records
-
-- Use mlab
-- Create new > Plan-Type: Sandbox > Continue
-- Name your db
-- Add Collection > Name your collection
+[Slide - Add games]()
 
 # How does our node app know about our mongodb?
 
