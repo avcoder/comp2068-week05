@@ -48,27 +48,13 @@
 
 [Slide - Add games]()
 
-# How does our node app know about our mongodb?
+[Slide - How does our node app know about our mongodb?]()
 
-# Introducing Mongoose
+[Slide - Mongoose]()
 
-- Mongoose is an object-document mapper (ODM) that allows a node application to interface with a MongoDB database
-- Mongoose is the node equivalent of Entity Framework (ORM) when connecting .NET and SQL SVR
-- The way Node talks to MongoDB is via Mongoose which we'll install via npm
+[Slide - Purpose of Schema]()
 
-"Mongoose provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box"
-
-## Purpose of Mongoose Schema/Model
-
-- To map a specific collection in a MongoDB for a Node application
-- To set out validation rules for a MongoDB collection
-- To allow a model class to use the built-in mongoose CRUD methods
-- we create the models ourselves; these schemas live in the web app, not the db
-
-## Installing mongoose then require it
-
-`npm i mongoose`
-[npm.im/mongoose](https://www.npmjs.com/package/mongoose)
+[Slide - npm i mongoose]()
 
 ## In a node application, where do we need to add a reference to mongoose?
 
