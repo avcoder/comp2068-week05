@@ -56,12 +56,6 @@
 
 [Slide - npm i mongoose]()
 
-## In a node application, where do we need to add a reference to mongoose?
-
-- In app.js
-- In any models we create
-- In any controllers we create
-
 ## In app.js
 
 `npm i dotenv`

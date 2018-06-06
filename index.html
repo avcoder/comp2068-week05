@@ -725,22 +725,16 @@
               </p>
             </div>
             <div class="column">
-              <h2>Create new express app</h2>
+              <h2>In a node application, where do we need to add a reference to mongoose?</h2>
               <ul class="flexblock reasons">
                 <li>
-                  <p class="text-intro"></p>
+                  <p class="text-intro">In app.js</p>
                 </li>
                 <li>
-                  <p class="text-intro"></p>
+                  <p class="text-intro">In any models we create</p>
                 </li>
                 <li>
-                  <p class="text-intro"></p>
-                </li>
-                <li>
-                  <p class="text-intro"></p>
-                </li>
-                <li>
-                  <p class="text-intro"></p>
+                  <p class="text-intro">In any controllers we create</p>
                 </li>
               </ul>
             </div>
@@ -752,9 +746,73 @@
         <!-- .end .wrap -->
       </section>
 
-
-
-
+      <section class="bg-apple">
+        <!--.wrap = container (width: 90%) -->
+        <div class="wrap size-90 aligncenter">
+          <h1>Steps to build an express app so far</h1>
+          <div class="grid vertical-align">
+            <div class="column">
+              <h4>Generate app</h4>
+              <ul class="flexblock specs">
+                <li>
+                  <code class="text-intro">1. express -e --git lesson5</code>
+                </li>
+                <li>
+                  <code class="text-intro">2. cd lesson5</code>
+                </li>
+                <li>
+                  <code class="text-intro">3. npm i</code>
+                </li>
+                <li>
+                  <code class="text-intro">4. npm start</code>
+                </li>
+                <li>
+                  <code class="text-intro">5. (nodemon)?</code>
+                </li>
+              </ul>
+            </div>
+            <div class="column">
+              <h4>Create routes and views</h4>
+              <ul class="flexblock specs">
+                <li>routes/index.js
+                  <code>6. router.get('/about', (req, res) => res.render('about', { title: "About Us" })</code>
+                </li>
+                <li>views/about.ejs
+                  <code>7. &lt;h1>&lt;%= title %>&lt;/h1></code>
+                </li>
+                <li>Create controllers/gameController.js
+                  <code>8. exports.about = (req, res) => { res.render('about', { isActive: 'about' }); }</code>
+                </li>
+                <li>Change routes/index.js
+                  <code>9. router.get('/about', gameController.about);</code>
+                </li>
+              </ul>
+            </div>
+            <div class="column">
+              <h4>Create partials</h4>
+              <ul class="flexblock specs">
+                <li>
+                  <code>11. mkdir /views/partials/</code>
+                </li>
+                <li>
+                  <code>12. touch /views/partials/header.ejs</code>
+                </li>
+                <li>
+                  <code>13. touch /views/partials/footer.ejs</code>
+                </li>
+                <li>Cut html code starting from the top down to (and including) the body tag and paste it in header.ejs
+                  <code>14. &lt;!DOCUMENT html5> ... <&lt;body></code>
+                </li>
+                <li>In views/index.ejs
+                  <code>15. &lt;% include partials/header %>  and  &lt;% include partials/footer %></code>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- .end .bg-white shadow -->
+        </div>
+        <!-- .end .wrap -->
+      </section>
 
 
 
