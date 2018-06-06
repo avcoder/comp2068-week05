@@ -56,7 +56,22 @@
 
 [Slide - npm i mongoose]()
 
-## In app.js
+# getmdl.io portfolio template
+- split into partials
+- change link from styles.css to /stylesheets/style.css
+- move images 
+- make images show by going to style.css and changing all references from images to /images
+- feel free to change picture with my twitter pic
+- change style.css from png to jpg
+- add border-radius: 50%
+
+# Creating variables.env
+- in root folder create `variables.env` file
+- Add entry: `DATABASE=mongodb://<dbuser>:<dbpassword>@ds251240.mlab.com:51240/retro`
+- in mlab.com, click Users tab and create a user and password
+- in variables.env, replace dbuser and dbpassword with credentials
+
+# In app.js
 
 `npm i dotenv`
 
@@ -70,10 +85,10 @@ mongoose.connect(process.env.DATABASE);
 ## Build a mongoose schema
 
 1.  Create a models folder
-1.  In it, create game.js, create schema, and export it as a mongoose.model
+1.  In it, create Game.js, create schema, and export it as a mongoose.model
 
   ```js
-  /* game.js */
+  /* Game.js */
   const mongoose = require('mongoose');
 
   // define a schema for the game model
@@ -103,3 +118,38 @@ mongoose.connect(process.env.DATABASE);
   * required field can include a message to give to user if they forgot to enter data for that field
 
 1. Create /controllers/games.js
+1. Edit games.ejs to use games data
+  ```html
+  <% include partials/header.ejs %>
+      <h1>
+          <%= title %>
+      </h1>
+
+      <div class="mdl-grid portfolio-max-width">
+
+          <% for (let i = 0; i < games.length; i++) { %>
+              <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                  <div class="mdl-card__media">
+
+                      <img class="article-image" src="<%= games[i].imageUrl %>" border="0" alt="Game cover image">
+
+                  </div>
+                  <div class="mdl-card__title">
+                      <h2 class="mdl-card__title-text">
+                          <%= games[i].name %>
+                      </h2>
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                      <%= games[i].publisher %>
+                  </div>
+                  <div class="mdl-card__actions mdl-card--border">
+                      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href='/playgame?game=<%= games[i].imageUrl.substring(games[i].imageUrl.lastIndexOf("/")+1) %>'>Play</a>
+                  </div>
+              </div>
+              <% } %>
+      </div>
+
+      <% include partials/footer.ejs %>
+  ```
+# Create add form
+
