@@ -1,3 +1,14 @@
+[Slide - Express steps]()
+
+# getmdl.io portfolio template
+- split into partials
+- change link from styles.css to /stylesheets/style.css
+- move images 
+- make images show by going to style.css and changing all references from images to /images
+- feel free to change picture with my twitter pic
+- change style.css from png to jpg
+- add border-radius: 50%
+
 [Slide - Why the Cloud]()
 
 # Benefits of Cloud Hosting
@@ -55,15 +66,6 @@
 [Slide - Purpose of Schema]()
 
 [Slide - npm i mongoose]()
-
-# getmdl.io portfolio template
-- split into partials
-- change link from styles.css to /stylesheets/style.css
-- move images 
-- make images show by going to style.css and changing all references from images to /images
-- feel free to change picture with my twitter pic
-- change style.css from png to jpg
-- add border-radius: 50%
 
 # Creating variables.env
 - in root folder create `variables.env` file
@@ -151,5 +153,19 @@ mongoose.connect(process.env.DATABASE);
 
       <% include partials/footer.ejs %>
   ```
+
+# Take care of is_active
+```html
+<%= isActive === 'portfolio' ? 'is-active' : '' %>
+```
+
+# Put / in gamesController
+
 # Create add form
 
+# Create admin table
+h1 { text-align: center}
+table { margin: 0 auto;}
+remove classes for games[i].title (make sure model has correct var names)
+
+# Add form
