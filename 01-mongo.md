@@ -160,12 +160,140 @@ mongoose.connect(process.env.DATABASE);
 ```
 
 # Put / in gamesController
+```js
+// routes/index.js
+router.get('/', gamesController.homePage);
 
-# Create add form
+// controllers/gamesController.js
+exports.homePage = (req, res, next) => {
+  res.render('index', { title: 'Express', isActive: 'home' });
+};
+```
 
 # Create admin table
 h1 { text-align: center}
 table { margin: 0 auto;}
 remove classes for games[i].title (make sure model has correct var names)
+```html
+<% include partials/header %>
+    <style scoped>
+        h1 {
+            text-align: center;
+        }
 
+        table {
+            margin: 0 auto;
+        }
+    </style>
+
+    <h1>
+        <%= title %>
+    </h1>
+
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Publisher</th>
+                <th>Year</th>
+                <th>image Url</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for (let i = 0; i < games.length; i++) { %>
+
+                <tr>
+                    <td>
+                        <%= games[i].title %>
+                    </td>
+                    <td>
+                        <%= games[i].publisher %>
+                    </td>
+                    <td>
+                        <%= games[i].year %>
+                    </td>
+                    <td>
+                        <%= games[i].imageUrl %>
+                    </td>
+                    <td>
+                        <a href="">Edit</a>
+                    </td>
+                    <td>
+                        <a href="">Delete</a>
+                    </td>
+                </tr>
+
+                <% } %>
+        </tbody>
+    </table>
+    <% include partials/footer %>
+```
 # Add form
+```js
+/* index.js */
+router.post('/add', gamesController.createGame);
+```
+
+Process year
+```js
+/* models/Game.js */
+/* before it is saved, it will run this function */
+gameSchema.pre('save', function (next) {
+  /* must use function above so 'this' refers to correct object */
+
+  /* if imageUrl is not modified, then do nothing, otherwise get year */
+  if (!this.isModified('imageUrl')) {
+    next(); // skip it
+    return; // stop this fn from running
+  }
+  /* get year from last 4 characters of imageURL */
+  this.year = this.imageUrl.substr(-4);
+  next();
+});
+```
+
+```html
+<% include partials/header %>
+    <style scoped>
+        form {
+            width: 400px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            padding: 100px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+
+    <h1>
+        <%= title %>
+    </h1>
+    <form method="POST" action="/add">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="name" name="name">
+            <label class="mdl-textfield__label" for="name">Title...</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="publisher" name="publisher">
+            <label class="mdl-textfield__label" for="publisher">Publisher...</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="image_url" name="imageUrl">
+            <label class="mdl-textfield__label" for="imageUrl">imageUrl...</label>
+        </div>
+        <br>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+            Submit
+        </button>
+    </form>
+
+    <% include partials/footer %>
+```
