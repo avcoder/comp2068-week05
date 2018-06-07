@@ -189,7 +189,12 @@ remove classes for games[i].title (make sure model has correct var names)
     <h1>
         <%= title %>
     </h1>
-
+    
+    <p>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/add">
+            Add Game
+        </a>
+    </p>
 
     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
@@ -220,10 +225,14 @@ remove classes for games[i].title (make sure model has correct var names)
                         <%= games[i].imageUrl %>
                     </td>
                     <td>
-                        <a href="">Edit</a>
+                        <a href=""><i class="material-icons">
+edit
+</i></a>
                     </td>
                     <td>
-                        <a href="">Delete</a>
+                        <a href=""><i class="material-icons">
+delete_forever
+</i></a>
                     </td>
                 </tr>
 
@@ -296,4 +305,15 @@ gameSchema.pre('save', function (next) {
     </form>
 
     <% include partials/footer %>
+```
+
+# Create playgame page
+```html
+<% include partials/header.ejs %>
+
+    <div class="page-content" style="margin: 0 auto; width: 700px;">
+        <iframe src="https://archive.org/embed/<%= title %>" width="800" height="600" frameborder="0" webkitallowfullscreen="true"
+            mozallowfullscreen="true" allowfullscreen></iframe>
+    </div>
+    <% include partials/footer.ejs %>
 ```
