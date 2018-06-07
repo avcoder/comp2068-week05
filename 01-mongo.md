@@ -295,6 +295,7 @@ delete_forever
 # Add form
 ```js
 /* index.js */
+router.get('/add', gamesController.addGame)
 router.post('/add', gamesController.createGame);
 ```
 
