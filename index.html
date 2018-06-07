@@ -875,14 +875,22 @@
             <div class="column">
               <h4>Add form</h4>
               <ul class="flexblock specs">
-                <li>
-                  <code class="text-intro">11. </code>
+                <li>index.js
+                  <code class="text-intro">11. router.post('/add', gamesController.createGame);</code>
                 </li>
                 <li>
-                  <code class="text-intro">12. </code>
+                  <code class="text-intro">12. modify .ejs file to include form. Make sure name fields correspond to mlab</code>
                 </li>
-                <li>
-                  <code class="text-intro">13. </code>
+                <li>controllers/gamesController.js
+                  <code>13. exports.createGame = async (req, res) => {
+                      try {
+                        const game = new Game(req.body);
+                        await game.save();
+                        res.redirect('/');
+                      } catch (err) {
+                        console.log(err);
+                      }
+                    };</code>
                 </li>
                 <li>
                   <code class="text-intro">14. </code>
