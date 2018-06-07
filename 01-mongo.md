@@ -119,7 +119,58 @@ mongoose.connect(process.env.DATABASE);
   ```
   * required field can include a message to give to user if they forgot to enter data for that field
 
-1. Create /controllers/games.js
+1. Create /controllers/gamesController.js
+```js
+const express = require('express');
+const Game = require('../models/Game');
+
+exports.getGames = (req, res) => {
+  // Use the Game model to query the db for game data
+
+  Game.find((err, games) => {
+    if (err) {
+      res.render('error');
+    } else {
+      // load the games page and pass the query result too
+      res.render('games', {
+        title: 'All Games',
+        games,
+      });
+    }
+  });
+};
+
+exports.homePage = (req, res) => {
+  res.render('index', {
+    title: 'Lesson 5 & 6',
+    message: 'CRUD with mongoDB',
+  });
+};
+
+exports.addGame = (req, res) => {
+  res.render('addGame', {
+    title: 'Add game',
+  });
+};
+
+exports.admin = (req, res) => {
+  res.render('index', {
+    title: 'Admin',
+    message: 'Table listing of all games with edit and delete buttons',
+  });
+};
+
+exports.createGame = async (req, res) => {
+  try {
+    const game = new Game(req.body);
+    await game.save();
+    req.flash('success', `Successfully created ${game.name}`);
+    res.redirect('/');
+  } catch (err) {
+    console.log(err);
+  }
+};
+```
 1. Edit games.ejs to use games data
   ```html
   <% include partials/header.ejs %>
