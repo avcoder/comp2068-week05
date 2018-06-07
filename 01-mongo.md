@@ -97,7 +97,7 @@ mongoose.connect(process.env.DATABASE);
   // this and all other models inherit from mongoose.Schema
 
   const gameSchema = new mongoose.Schema({
-    name: {
+    title: {
       type: String,
       required: 'Doh! You forgot to put in the game title for the name',
     },
